@@ -6,14 +6,10 @@ run_analysis <- function() {
   features2col <- read.csv("uci_har_dataset/features.txt",header=F,sep=" ")    
   features <- features2col[,2] ;
   
-  #Find mean related columns
-  meanCols <- features[grepl("mean", features)];
+  #Find mean and std related columns
+  requiredCols <- features[grepl("mean", features) | grepl("mean", features)];
   
-  #Find mean related columns
-  stdCols <- features[grepl("std", features)] ;
-  
-  #All required columns
-  requiredCols <- c(meanCols,stdCols)
+  print(requiredCols)
   
   #Read test data
   testX <- read.csv("uci_har_dataset/test/X_test.txt",header=F,sep="")  
